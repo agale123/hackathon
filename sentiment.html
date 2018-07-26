@@ -1,0 +1,127 @@
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="sentiment.js"></script>
+<div class="chartWithMarkerOverlay" style="position: relative; width:100%">
+<div id="chart_div" style="height:500px"></div>
+<div class="overlay-1" style="position:absolute">
+    <img src="https://cdn2.iconfinder.com/data/icons/toolbar-signs/512/medical-512.png" height="30">
+</div>
+<div class="overlay-2" style="position:absolute">
+    <img src="https://cdn2.iconfinder.com/data/icons/toolbar-signs/512/medical-512.png" height="30">
+</div>
+<div class="overlay-3" style="position:absolute">
+    <img src="https://cdn.pixabay.com/photo/2013/07/13/10/51/football-157930__340.png" height="30">
+</div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="modal-question">
+        <b>Chicago Red Stars v Seattle Reign</b>
+        <p>A hard foul just occured. What do you think the ref should call?</p>
+        <button onclick="showResults()">Foul. No card</button>
+        <button onclick="showResults()">Yellow card</button>
+        <button onclick="showResults()">Red card</button>
+    </div>
+    <div class="modal-result" style="display: none">
+        <b>Chicago Red Stars v Seattle Reign</b>
+        <p>A hard foul just occured. What do you think the ref should call?</p>
+        <table>
+            <tr><td>Foul. No card</td><td>20%</td></tr>
+            <tr><td><b>Yellow card</b></td><td><b>75%</b></td></tr>
+            <tr><td>Red card</td><td>5%</td></tr>
+        </table>
+    </div>
+</div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+if (window.location.href.indexOf('live-event') > 0) {
+    setTimeout(() => {
+        showModal();
+    }, 5000);
+}
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+var question = document.getElementsByClassName("modal-question")[0];
+
+var result = document.getElementsByClassName("modal-result")[0];
+
+function showResults() {
+    question.style.display = "none";
+    result.style.display = "block";
+}
+
+// When the user clicks the button, open the modal 
+function showModal() {
+    modal.style.display = "block";
+    question.style.display = "block";
+    result.style.display = "none";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
