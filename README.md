@@ -1,1 +1,10 @@
-# hackathon
+# Twitter Sentiment Analysis
+
+To import tweets and write them to a file, run:
+python3 twitter_import.py twitter_keys > twitter_out
+
+To calculare the sentiment of each tweet in twitter_out and print out the sentiment values for tweets with non-zero sentiment, run:
+python3 sentiment.py
+
+To group tweet sentiments into buckets, run:
+python3 twitter_bucket.py
